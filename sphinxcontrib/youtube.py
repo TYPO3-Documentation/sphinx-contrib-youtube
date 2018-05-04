@@ -23,7 +23,7 @@ def css(d):
 class youtube(nodes.General, nodes.Element): pass
 
 def dummy_visit_youtube_node(self, node):
-    return "https://www.youtube.com/embed/%s" % node["id"],
+    pass
 
 def visit_youtube_node(self, node):
     aspect = node["aspect"]
@@ -105,8 +105,8 @@ class YouTube(Directive):
 def setup(app):
     app.add_node(youtube,
                  html = (visit_youtube_node, depart_youtube_node),
-                 latex = (dummy_visit_youtube_node, None),
-                 man = (dummy_visit_youtube_node, None),
-                 texinfo = (dummy_visit_youtube_node, None),
-                 text = (dummy_visit_youtube_node, None))
+                 latex = (dummy_visit_youtube_node, depart_youtube_node),
+                 man = (dummy_visit_youtube_node, depart_youtube_node),
+                 texinfo = (dummy_visit_youtube_node, depart_youtube_node),
+                 text = (dummy_visit_youtube_node, depart_youtube_node))
     app.add_directive("youtube", YouTube)
