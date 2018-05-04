@@ -100,5 +100,10 @@ class YouTube(Directive):
         return [youtube(id=self.arguments[0], aspect=aspect, width=width, height=height)]
 
 def setup(app):
-    app.add_node(youtube, html=(visit_youtube_node, depart_youtube_node))
+    app.add_node(youtube,
+                 html = (visit_youtube_node, depart_youtube_node),
+                 latex = (None, None),
+                 man = (None, None),
+                 texinfo = (None, None),
+                 text = (None, None))
     app.add_directive("youtube", YouTube)
